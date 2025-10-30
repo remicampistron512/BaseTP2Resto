@@ -75,7 +75,7 @@ public class Restaurant {
         	order[4] = desserts.get(dessertsChoice);
         	System.out.print("[");
         	for (int i = 0; i<order.length;i++) {
-        		if(!order[i].equals("aucun") || !order[i].equals("aucune") ) {
+        		if(!order[i].equalsIgnoreCase("aucun") && !order[i].equalsIgnoreCase("aucune") ) {
         			if(i!=0) {
         				System.out.print(" ");
         			}
