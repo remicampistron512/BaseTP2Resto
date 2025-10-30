@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Restaurant {
 	public static void main(String[] args) {
+		
+		// Les hashmaps contenant les différents menus
 		HashMap<Integer, String> starters = new HashMap<>();
         starters.put(1, "salade");
         starters.put(2, "soupe");
@@ -46,6 +48,7 @@ public class Restaurant {
         	counter ++;
         	
         	System.out.println("Commande numéro "+ counter);
+        	
         	System.out.println("Choix entrée");
         	displayMenu(desserts);
         	int starterChoice = scan.nextInt();
@@ -68,11 +71,14 @@ public class Restaurant {
         	
         	String [] order = new String[5];
         	System.out.println("Résumé de la commande " + counter);
+        	// Récupère le nom du plat pour l'insérer dans notre commande
         	order[0] = starters.get(starterChoice);
         	order[1] = mainDishes.get(mainDishesChoice);
         	order[2] = sideDishes.get(sideDishesChoice);
         	order[3] = beverages.get(beveragesChoice);
         	order[4] = desserts.get(dessertsChoice);
+        	
+        	//affiche la commande
         	System.out.print("[");
         	for (int i = 0; i<order.length;i++) {
         		if(!order[i].equalsIgnoreCase("aucun") && !order[i].equalsIgnoreCase("aucune") ) {
@@ -89,8 +95,12 @@ public class Restaurant {
         	System.out.print("]");
         	System.out.println("");
         }
+        scan.close();
 	}
-	
+	/**
+	 * Affiche un menu de plats
+	 * @param menu
+	 */
 	private static void displayMenu(HashMap<Integer, String> menu) {
 		for (Map.Entry<Integer, String> entry : menu.entrySet()) {
 			Integer key = entry.getKey();
