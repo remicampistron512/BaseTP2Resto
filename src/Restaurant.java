@@ -1,6 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Restaurant {
 	public static void main(String[] args) {
@@ -44,6 +42,9 @@ public class Restaurant {
         Scanner scan = new Scanner(System.in);
         boolean choice = true;
         int counter = 0;
+    	System.out.println("Bonjour combien de menus souhaitez-vous ");
+    	int nbMenus = scan.nextInt();
+    	
         while (choice == true) {
         	counter ++;
         	
