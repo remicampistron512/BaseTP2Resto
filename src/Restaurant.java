@@ -52,7 +52,7 @@ public class Restaurant {
         	System.out.println("Commande numéro "+ counter);
         	
         	System.out.println("Choix entrée");
-        	displayMenu(desserts);
+        	displayMenu(starters);
         	int starterChoice = scan.nextInt();
         	
         	System.out.println("Choix plats");
