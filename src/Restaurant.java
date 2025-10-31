@@ -41,11 +41,12 @@ public class Restaurant {
         
         Scanner scan = new Scanner(System.in);
         boolean choice = true;
-        int counter = 0;
+        
     	System.out.println("Bonjour combien de menus souhaitez-vous ");
     	int nbMenus = scan.nextInt();
+    	int counter = 0;
     	
-        while (choice == true) {
+        while (counter<nbMenus) {
         	counter ++;
         	
         	System.out.println("Commande numéro "+ counter);
