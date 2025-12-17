@@ -1,7 +1,11 @@
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class Restaurant {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		// Les hashmaps contenant les différents menus
 		HashMap<Integer, String> starters = new HashMap<>();
@@ -40,12 +44,12 @@ public class Restaurant {
 
         
         Scanner scan = new Scanner(System.in);
-        boolean choice = true;
+        
         
     	System.out.println("Bonjour combien de menus souhaitez-vous ");
     	int nbMenus = scan.nextInt();
     	int counter = 0;
-    	
+    	HashMap<Integer, String []> menus = new HashMap<>();
         while (counter<nbMenus) {
         	counter ++;
         	
@@ -80,6 +84,10 @@ public class Restaurant {
         	order[3] = beverages.get(beveragesChoice);
         	order[4] = desserts.get(dessertsChoice);
         	
+        	menus.put(counter, order);
+        	
+        	
+        	
         	//affiche la commande
         	System.out.print("[");
         	for (int i = 0; i<order.length;i++) {
@@ -97,6 +105,7 @@ public class Restaurant {
         	System.out.print("]");
         	System.out.println("");
         }
+        outPutMenuToFile(menus);
         scan.close();
 	}
 	/**
@@ -111,5 +120,27 @@ public class Restaurant {
 		   
 		}
 		 System.out.println("");
+	}
+	
+	public static void outPutMenuToFile(HashMap<Integer, String []> menus) throws Exception {
+		 try (BufferedWriter w = new BufferedWriter(
+	            new OutputStreamWriter(new FileOutputStream("menu.txt"), StandardCharsets.UTF_8))) {
+			 	
+			 	
+			 	for (Map.Entry<Integer,  String []> entry : menus.entrySet()) {
+			 	    Integer key = entry.getKey();
+			 	    String [] menusList = entry.getValue();
+			 	    w.write("résumé de la commande " + key);
+				 	w.newLine();
+			 	    for (int i=0;i<menusList.length;i++) {
+			 	    	w.write(menusList[i]);
+				         w.newLine();
+			 	    }
+			 	    
+			 	}
+			 	
+				 
+			 }	           
+	        
 	}
 }
